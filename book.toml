@@ -1,0 +1,10 @@
+[book]
+authors = ["Lucas"]
+language = "de"
+multilingual = false
+src = "src"
+title = "Algorithmen 1"
+
+# enable support for math equations
+[output.html]
+mathjax-support = true
