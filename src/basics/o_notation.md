@@ -1,7 +1,7 @@
 O-Notation
 ===
 
-![chart](o_chart.png)
+![chart](../resources/o_chart.png)
 
 [https://www.bigocheatsheet.com](https://www.bigocheatsheet.com)
 
@@ -17,25 +17,25 @@ O-Notation
 
 ## Mengen Definition
 
-| Notation               | Menge                                                                                                          |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------- |
-| \\[ O(f(n)) \\]        | \\[ \\{ g(n) : \exists c > 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \leq c * f(n) \\} \\]  |
-| \\[ \Omega(f(n)) \\]   | \\[ \\{ g(n) : \exists c > 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \geq c * f(n) \\} \\]  |
-| \\[ \Theta(f(n)) \\]   | \\[ \mathcal{O}(f(n)) \cap \Omega(f(n)) \\]                                                                    |
-| \\[ \hbox{o}(f(n)) \\] | \\[  \\{ g(n) : \forall c > 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \leq c * f(n) \\} \\] |
-| \\[ \omega(f(n)) \\]   | \\[ \\{ g(n) : \forall c > 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \geq c * f(n) \\} \\]  |
+| Notation                  | Menge                                                                                                          |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| \\[ \mathcal{O}(f(n)) \\] | \\[ \\{ g(n) : \exists c > 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \leq c * f(n) \\} \\]  |
+| \\[ \Omega(f(n)) \\]      | \\[ \\{ g(n) : \exists c > 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \geq c * f(n) \\} \\]  |
+| \\[ \Theta(f(n)) \\]      | \\[ \mathcal{O}(f(n)) \cap \Omega(f(n)) \\]                                                                    |
+| \\[ \hbox{o}(f(n)) \\]    | \\[  \\{ g(n) : \forall c > 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \leq c * f(n) \\} \\] |
+| \\[ \omega(f(n)) \\]      | \\[ \\{ g(n) : \forall c > 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \geq c * f(n) \\} \\]  |
 
 # Gebräuchliche Klassen
 
-| O-Klasse            | Eigenschaft                       |
-| ------------------- | --------------------------------- |
-| \\( O(1) \\)        | Höchstens konstanter Aufwand      |
-| \\( O(\log n) \\)   | Höchstens logarithmischer Aufwand |
-| \\( O(n) \\)        | Höchstens linearer Aufwand        |
-| \\( O(n \log n) \\) | Höchstens \\( n \log n \\)        |
-| \\( O(n^2) \\)      | Höchstens quadratischer Aufwand   |
-| \\( O(n^k) \\)      | Höchstens polynomialer Aufwand    |
-| \\( O(2^n) \\)      | Höchstens exponentieller Aufwand  |
+| O-Klasse                      | Eigenschaft                       |
+| ----------------------------- | --------------------------------- |
+| \\( \mathcal{O}(1) \\)        | Höchstens konstanter Aufwand      |
+| \\( \mathcal{O}(\log n) \\)   | Höchstens logarithmischer Aufwand |
+| \\( \mathcal{O}(n) \\)        | Höchstens linearer Aufwand        |
+| \\( \mathcal{O}(n \log n) \\) | Höchstens \\( n \log n \\)        |
+| \\( \mathcal{O}(n^2) \\)      | Höchstens quadratischer Aufwand   |
+| \\( \mathcal{O}(n^k) \\)      | Höchstens polynomialer Aufwand    |
+| \\( \mathcal{O}(2^n) \\)      | Höchstens exponentieller Aufwand  |
 
 # Hierarchie im O-Kalkül
 

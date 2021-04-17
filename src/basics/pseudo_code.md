@@ -1,6 +1,7 @@
-# Pseudo Code
+Pseudo Code
+===
 
-## Syntax
+# Syntax
 
 | Symbol    | Bedeutung                        | Beispiele      |
 | --------- | -------------------------------- | -------------- |
@@ -11,25 +12,32 @@
 ---
 
 
-| Symbol                       | Name                             | Erklärung | Beispiel                               |
-| ---------------------------- | -------------------------------- | --------- | -------------------------------------- |
-| `{ident} := {value}`         | Zuweisung                        |           | `c := 0`                               |
-| `{ident} = {value} : {type}` | Variablendeklaration             |           | `d = 1 : Digit` oder `answer = 42 : ℕ` |
-| `//`                         | Kommentar                        |           | `// dies ist ein Kommentar`            |
-| `({ident}, {ident})`         | Tupel                            |           | `(a, b)`                               |
-| `({ident}, {ident})`         | Tupel                            |           | `(a, b)`                               |
-| `⊥`                          | Undefinierter Wert               |           | `c := ⊥`                               |
-| `{statement} ; {statement}`  | Mehrere Ausdrücke in einer Zeile |           | `c = 0 ; d = 1`                        |
+| Symbol                       | Name                             | Beispiel                               |
+| ---------------------------- | -------------------------------- | -------------------------------------- |
+| `{ident} := {value}`         | Zuweisung                        | `c := 0`                               |
+| `{ident} = {value} : {type}` | Variablendeklaration             | `d = 1 : Digit` oder `answer = 42 : ℕ` |
+| `//`                         | Kommentar                        | `// dies ist ein Kommentar`            |
+| `({ident}, {ident})`         | Tupel                            | `(a, b)`, (1, 2, 3)                    |
+| `{statement} ; {statement}`  | Mehrere Ausdrücke in einer Zeile | `c = 0 ; d = 1`                        |
 
 ## Elementare Datentypen
 
-| Datentyp  | Bedeutung                            | Wertebereich |
-| --------- | ------------------------------------ | ------------ |
-| `integer` | ganze Zahlen                         |              |
-| `Boolean` | Boolsche Werte (`True` oder `true`?) |              |
-| `Element` | Wenn der Datentyp irrelevant ist     |              |
+| Datentyp  | Bedeutung                        | Wertebereich    |
+| --------- | -------------------------------- | --------------- |
+| `integer` | ganze Zahlen                     |                 |
+| `Boolean` | Boolsche Werte                   | `true`, `false` |
+| `Element` | Wenn der Datentyp irrelevant ist |                 |
 
 Die numerischen Typen werden manchmal um die Werte \\( - \infty \\) und \\( \infty \\) erweitert.
+
+## Schleifen
+
+| Abkürzungen                    | Volle Formulierung                    |
+| ------------------------------ | ------------------------------------- |
+| `while C do I`                 | `if C then repeat I until ¬C`         |
+| `for i := a to b do I`         | `i := a; while i <= b do I; i++`      |
+| `for i := a to ∞ while C do I` | `i := a; while C do I; i++`           |
+| `foreach e ∈ s do I`           | `for i := 1 to \|s\| do e := s[i]; I` |
 
 ## Besondere Werte
 
@@ -103,32 +111,19 @@ Die alternative Schreibweise `(∗p).age` und `(∗p).income` ist möglich, aber
 
 Arrays und Objekte, auf die mit Zeigern verwiesen wird, können mit den Anweisungen
 `allocate` und `dispose` bereitgestellt und mit einem Namen versehen
-bzw. wieder freigegeben werden. Beispielsweise stellt die Anweisung p := allocate
-Array [1..n] of T ein Array von n Objekten vom Typ T bereit, d. h., es wird ein zusammenhängendes
-Speichersegment reserviert, dessen Länge für genau n Objekte
-vom Typ T ausreicht, und die Variable p erhält als Wert den Griff für das Array (die
-Startadresse dieses Speichersegments). Die Anweisung dispose p gibt den Speicherbereich
-frei und macht ihn damit für anderweitige Benutzung verfügbar. Mit den
-Operationen allocate und dispose können wir das Array S der RAM-Speicherzellen
-in disjunkte Stücke zerlegen, auf die man individuell zugreifen kann. Die beiden
-Funktionen können so implementiert werden, dass sie nur konstante Zeit benötigen,
-zum Beispiel auf die folgende extrem einfache Weise: Die Adresse der ersten freien
-Speicherzelle in S wird in einer speziellen Variablen free gehalten. Ein Aufruf von
-allocate reserviert einen Speicherabschnitt, der bei free beginnt, und erhöht free um
-dem Umfang des reservierten Abschnitts. Ein Aufruf von dispose hat keinen Effekt.
-Diese Implementierung ist zeiteffizient, aber nicht speicherplatzeffizient: Zwar benötigt
-jeder Aufruf von allocate oder dispose nur konstante Zeit, aber der gesamte Speicherplatzverbrauch
-ist die Summe der Längen aller jemals reservierten Segmente und
-nicht der maximale zu einem Zeitpunkt benötigte (d. h. reservierte, aber noch nicht
-freigegebene) Platz. Ob jede beliebige Folge von allocate- und dispose-Operationen
-zugleich speicherplatzeffizient und mit konstantem Zeitaufwand für jede Operation
-realisiert werden kann, ist ein offenes Problem. Jedoch lassen sich für alle Algorithmen,
-die in diesem Buch vorgestellt werden, allocate und dispose zugleich zeit- und
-platzeffizient realisieren.
+bzw. wieder freigegeben werden. Beispielsweise stellt die Anweisung
+`p := allocate Array [1..n] of T` ein Array von `n` Objekten vom Typ `T` bereit, d. h., es wird ein zusammenhängendes
+Speichersegment reserviert, dessen Länge für genau `n` Objekte
+vom Typ `T` ausreicht, und die Variable `p` erhält als Wert den Griff für das Array (die
+Startadresse dieses Speichersegments). Die Anweisung `dispose p` gibt den Speicherbereich
+frei und macht ihn damit für anderweitige Benutzung verfügbar.
+
+Mit den Operationen `allocate` und `dispose` können wir das Array `S` der RAM-Speicherzellen
+in disjunkte Stücke zerlegen, auf die man individuell zugreifen kann.
 
 ### Übernommene Datentypen aus der Mathematik
 
-#### Tupel ((1, 2, 3))
+#### Tupel (`(1, 2, 3)`)
 
 Einige zusammengesetzte Datentypen werden wir aus der Mathematik übernehmen.
 Insbesondere verwenden wir Tupel, (endliche) Folgen und Mengen. (Geordnete)
