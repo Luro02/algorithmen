@@ -1,4 +1,5 @@
-# Potenzgesetze
+Potenzgesetze
+===
 
 ## Überblick
 
