@@ -1,5 +1,4 @@
-Logarithmus Regeln
-===
+# Logarithmus Regeln
 
 ## Besondere Werte
 

@@ -1,5 +1,4 @@
-Master Theorem
-===
+# Master Theorem
 
 # Einfache Form
 

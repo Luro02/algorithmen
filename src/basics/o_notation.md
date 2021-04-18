@@ -1,5 +1,4 @@
-O-Notation
-===
+# O-Notation
 
 ![chart](../resources/o_chart.png)
 

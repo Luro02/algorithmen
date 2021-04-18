@@ -1,5 +1,4 @@
-Pseudo Code
-===
+# Pseudo Code
 
 # Syntax
 
@@ -48,7 +47,7 @@ der von den „eigentlichen“ Objekten vom Typ T unterscheidbar sein soll.
 
 #### Beispiele
 
-```
+```pseudocode
 p = ⊥ : Digit
 ```
 
@@ -62,7 +61,7 @@ Im RAM-Modell ist ein solcher Griff einfach der Index (die "Adresse") der ersten
 
 #### Beispiele
 
-```
+```pseudocode
 p = ⊥ : Pointer to T
 ```
 
@@ -83,7 +82,7 @@ dann lädt die Befehlsfolge `R_1 :=R_a + R_i; R_2 := S[R_1]` den Inhalt von `a[4
 `R_2`.
 
 
-```
+```pseudocode
 R_a = /* enthält die Startadresse von a[0..k] */
 R_i = 42 : Index
 

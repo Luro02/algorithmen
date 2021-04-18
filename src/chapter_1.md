@@ -32,7 +32,7 @@ Eingabe: zwei Langzahlen \\( \vec{a} = (a_{n-1}, ... , a_{0}) \\) und \\( \vec{b
 
 Verfahren:
 
-```
+```pseudocode
 c = 0 : Digit // carry, Überlauf
 
 for i := 0 to n - 1 do
