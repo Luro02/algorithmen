@@ -100,7 +100,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="basics/basics.html"><strong aria-hidden="true">1.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basics/log.html"><strong aria-hidden="true">1.1.</strong> Logarithmusgesetze</a></li><li class="chapter-item expanded "><a href="basics/potenzgesetze.html"><strong aria-hidden="true">1.2.</strong> Potenzgesetze</a></li><li class="chapter-item expanded "><a href="basics/konvergenz.html"><strong aria-hidden="true">1.3.</strong> Konvergenz</a></li><li class="chapter-item expanded "><a href="basics/pseudo_code.html"><strong aria-hidden="true">1.4.</strong> Pseudo Code</a></li><li class="chapter-item expanded "><a href="basics/o_notation.html"><strong aria-hidden="true">1.5.</strong> O-Notation</a></li><li class="chapter-item expanded "><a href="basics/master_theorem.html"><strong aria-hidden="true">1.6.</strong> Master Theorem</a></li><li class="chapter-item expanded "><a href="basics/schleifen_invariante.html"><strong aria-hidden="true">1.7.</strong> Schleifeninvariante</a></li></ol></li><li class="chapter-item expanded "><a href="algorithmen/algorithmen.html"><strong aria-hidden="true">2.</strong> Algorithmen</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithmen/rekursive_multiplikation.html"><strong aria-hidden="true">2.1.</strong> Rekursive Multiplikation</a></li></ol></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">3.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="README.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item "><a href="chapter_1.html"><strong aria-hidden="true">2.</strong> Chapter 1</a></li><li class="spacer"></li><li class="chapter-item "><a href="basics/README.html"><strong aria-hidden="true">3.</strong> basics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="basics/schleifen_invariante.html"><strong aria-hidden="true">3.1.</strong> Schleifeninvariante</a></li><li class="chapter-item "><a href="basics/potenzgesetze.html"><strong aria-hidden="true">3.2.</strong> Potenzgesetze</a></li><li class="chapter-item "><a href="basics/master_theorem.html"><strong aria-hidden="true">3.3.</strong> Master Theorem</a></li><li class="chapter-item "><a href="basics/pseudo_code.html"><strong aria-hidden="true">3.4.</strong> Pseudo Code</a></li><li class="chapter-item "><a href="basics/log.html"><strong aria-hidden="true">3.5.</strong> Logarithmus Regeln</a></li><li class="chapter-item "><a href="basics/konvergenz.html"><strong aria-hidden="true">3.6.</strong> Konvergenz</a></li><li class="chapter-item "><a href="basics/o_notation.html"><strong aria-hidden="true">3.7.</strong> O-Notation</a></li><li class="spacer"></li></ol></li><li class="chapter-item "><a href="algorithmen/README.html"><strong aria-hidden="true">4.</strong> algorithmen</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="algorithmen/rekursive_multiplikation.html"><strong aria-hidden="true">4.1.</strong> Rekursive Multiplikation</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -172,26 +172,85 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="logarithmus-regeln"><a class="header" href="#logarithmus-regeln">Logarithmus Regeln</a></h1>
-<h2 id="besondere-werte"><a class="header" href="#besondere-werte">Besondere Werte</a></h2>
-<p>\[ \log_b{b} = 1 \]</p>
-<p>\[ \log_b{1} = 0 \]</p>
-<h2 id="regeln"><a class="header" href="#regeln">Regeln</a></h2>
-<p>\[ \log_b{(x * n)} = \log_b{x} + \log_b{n} \]</p>
-<hr />
-<p>\[ \log_b{\left ( \frac{x}{n} \right)} = \log_b{x} - \log_b{n} \]</p>
-<hr />
-<p>\[ \log_b{\left ( x^n \right)} = n * \log_b{x} \]</p>
-<hr />
-<p>\[ \log_b{\sqrt[n]{x}} = \frac{1}{n} * \log_b{x} \]</p>
-<hr />
-<p>\[ \log_k{x} = \frac{\log_b{x}}{\log_b{k}} \]</p>
-<p><a href="https://www.frustfrei-lernen.de/mathematik/logarithmus-regeln.html">Quelle (2021.04.17)</a></p>
-<h2 id="ungleichungen"><a class="header" href="#ungleichungen">Ungleichungen</a></h2>
-<p>Falls \(b &gt; 1\), dann gilt:</p>
-<p>\[ 0 &lt; x &lt; y \iff \log_b{x} &lt; \log_b{y} \]</p>
-<p>Falls \(0 &lt; b &lt; 1\), dann gilt:</p>
-<p>\[ 0 &lt; x &lt; y \iff \log_b{x} &gt; \log_b{y} \]</p>
+                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+<h2 id="definition-von-algorithmus"><a class="header" href="#definition-von-algorithmus">Definition von Algorithmus</a></h2>
+<p>Rechenvorschrift zur Lösung eines Problems, bestehend aus endlich vielen, wohldefinierten Einzelschritten</p>
+<h2 id="eigenschaften-eines-algorithmus"><a class="header" href="#eigenschaften-eines-algorithmus">Eigenschaften eines Algorithmus</a></h2>
+<ul>
+<li>ein Algorithmus besitzt eine Eingabe und eine Ausgabe</li>
+<li>das Verfahren muss eindeutig und endlich beschreibbar sein (Finitheit)</li>
+<li>jeder Schritt des Verfahrens muss tatsächlich ausführbar sein (Ausführbarkeit)</li>
+<li>das Verfahren darf zu jedem Zeitpunkt nur endlich viel Speicherplatz
+benötigen (dynamische Finitheit, Platzkomplexität)</li>
+<li>das Verfahren darf nur endlich viele Schritte benötigen
+(Terminierung, Zeitkomplexität)</li>
+</ul>
+<h2 id="erster-algorithmus-langzahl-multiplikation"><a class="header" href="#erster-algorithmus-langzahl-multiplikation">Erster Algorithmus: Langzahl-Multiplikation</a></h2>
+<h3 id="gegeben"><a class="header" href="#gegeben">Gegeben:</a></h3>
+<ul>
+<li>Zahlen als Ziffernfolgen (&quot;digits&quot;) zur Basis B</li>
+<li>\( \vec{a} = (a_{n-1}, ... , a_{0}) \) mit Ziffern \( a_i = \{ 0, ..., B - 1 \} \)</li>
+<li>beschreibt die Zahl \( a_{0} * B^{0} + a_{1} * B^{1} + a_{2} * B^{2} + ... + a_{n-1} * B^{n-1} \)</li>
+</ul>
+<h3 id="aufgabe"><a class="header" href="#aufgabe">Aufgabe:</a></h3>
+<p>Berechne das Produkt zweier Langzahlen \( \vec{a} \) und \( \vec{b} \).</p>
+<h4 id="algorithmus-zur-addition-zweier-langzahlen"><a class="header" href="#algorithmus-zur-addition-zweier-langzahlen">Algorithmus zur Addition zweier Langzahlen</a></h4>
+<p>Eingabe: zwei Langzahlen \( \vec{a} = (a_{n-1}, ... , a_{0}) \) und \( \vec{b} = (b_{n-1}, ... , b_{0}) \)</p>
+<p>Verfahren:</p>
+<pre><code class="language-pseudocode">c = 0 : Digit // carry, Überlauf
+
+for i := 0 to n - 1 do
+    (c, s_i) := a_i + b_i + c
+
+s_n := c
+</code></pre>
+<p>Ausgabe: Summe \( \vec{s} = (s_{n}, ... , s_{0}) \)</p>
+<p>Satz: Addition von zwei \(n\)-Ziffern-Zahlen benötigt \(n\) (Ziffern-)Additionen</p>
+<h4 id="algorithmus-zur-multiplikation-mit-einer-ziffer"><a class="header" href="#algorithmus-zur-multiplikation-mit-einer-ziffer">Algorithmus zur Multiplikation mit einer Ziffer</a></h4>
+<pre><code class="language-pseudocode">Function numberTimesDigit(a: Array[0..n-1] of Digit, b: Digit)
+
+r: Array[0..n] of Digit
+    c = 0 : Digit
+    (hi', lo) := a[0] * b // Ziffernmultiplikation
+    r[0] := lo
+
+    for i := 1 to n - 1 do
+        (hi, lo) := a[i] * b // Ziffernmultiplikation
+        (c, r[i]) := c + hi' + lo // Ziffernaddition
+        hi' := hi
+    r[n] := c + hi'
+    return r
+</code></pre>
+<p>Anzahl an Multiplikationen: \( (n - 1) + 1 = n \)</p>
+<p>Anzahl an Additionen: \( (n - 1) + 1 = n \)</p>
+<h1 id="basics"><a class="header" href="#basics">Basics</a></h1>
+<h1 id="schleifeninvariante"><a class="header" href="#schleifeninvariante">Schleifeninvariante</a></h1>
+<p>Die Schleifeninvariante muss an folgenden Stellen gelten:</p>
+<ul>
+<li>Direkt nach Initialisierung der Laufvariable</li>
+<li>Vor bzw. nach der Überprüfung, ob die Schleife ausgeführt werden soll</li>
+<li>Nach Ausführung des Schleifenrumpfes (dieser beinhaltet auch das Inkrementieren der Laufvariable)</li>
+<li>Nach Ende der Schleife, die Laufvariable darf hierbei noch als existent angesehen werden</li>
+</ul>
+<h2 id="beispiele"><a class="header" href="#beispiele">Beispiele</a></h2>
+<pre><code class="language-pseudocode">Function power(a : ℝ; n_0 : ℕ) : ℝ
+    assert n_0 &gt;= 0 and ¬(a = 0 und n_0 = 0) // Vorbedingung
+    p = a : ℝ
+    r = 1 : ℝ
+    n = n_0 : ℕ // p^n * r = a^(n_0) hier 2^5 * 1 = 2^5
+
+    while n &gt; 0 do
+        invariant p^n * r = a^(n_0) und n &gt;= 0 // Schleifeninvariante
+        if n is odd then
+            n--
+            r := r * p
+        else
+            (n, p) := (n/2, p * p)
+
+    assert r = a^(n_0) // Nachbedingung
+    return r
+</code></pre>
+<p>Falls n gerade: Invariante gilt wegen \((p * p)^{\frac{n}{2}} = p^n \), wobei \(p * p \) = neues p und \(n/2\) = neues p.</p>
 <h1 id="potenzgesetze"><a class="header" href="#potenzgesetze">Potenzgesetze</a></h1>
 <h2 id="Überblick"><a class="header" href="#Überblick">Überblick</a></h2>
 <h3 id="potenzen-addieren"><a class="header" href="#potenzen-addieren">Potenzen addieren</a></h3>
@@ -263,23 +322,10 @@
 <p>\[ x^{-\frac{m}{n}} = \frac{1}{\sqrt[n]{x^{m}}} \]</p>
 <hr />
 <p><a href="https://www.mathebibel.de/potenzgesetze">Quelle (2021.04.17)</a></p>
-<h1 id="konvergenz"><a class="header" href="#konvergenz">Konvergenz</a></h1>
-<p>\[ \lim_{n \to \infty} \frac{1}{n} = 0 \]</p>
-<p>Für \( k \in \mathbb{K} \) gilt:</p>
-<p>\[ \lim_{n \to \infty} \left(\frac{1}{k} \right)^n = 0 \]</p>
-<p>L'Hôpitals Regel (Krankenhaus-Regel):</p>
-<p>\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)} \]</p>
-<h2 id="limes-regeln"><a class="header" href="#limes-regeln">Limes-Regeln</a></h2>
-<p>Faktorregel:</p>
-<p>\[ \lim_{x \to c} a * f(x) = a * \lim_{x \to c} f(x) \]</p>
-<p>Summenregel:</p>
-<p>\[ \lim_{x \to c} \left[ f(x) + g(x) \right] = \lim_{x \to c} f(x) + \lim_{x \to c} g(x) \]</p>
-<p>Produktregel:</p>
-<p>\[ \lim_{x \to c} \left[ f(x) * g(x) \right] = \lim_{x \to c} f(x) * \lim_{x \to c} g(x) \]</p>
-<p>Quotientenregel:</p>
-<p>\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \frac{\lim_{x \to c} f(x)}{\lim_{x \to c} g(x)} \]</p>
-<p>Sei \( f \) eine stetige Funktion, dann gilt:</p>
-<p>\[ \lim_{x \to c} f(x) = f \left(\lim_{x \to c} x \right) \]</p>
+<h1 id="master-theorem"><a class="header" href="#master-theorem">Master Theorem</a></h1>
+<h1 id="einfache-form"><a class="header" href="#einfache-form">Einfache Form</a></h1>
+<h1 id="sonstiges"><a class="header" href="#sonstiges">Sonstiges</a></h1>
+<p>\[ T(n) = aT\left(\frac{n}{b}\right) + f(n) \]</p>
 <h1 id="pseudo-code"><a class="header" href="#pseudo-code">Pseudo Code</a></h1>
 <h1 id="syntax"><a class="header" href="#syntax">Syntax</a></h1>
 <table><thead><tr><th>Symbol</th><th>Bedeutung</th><th>Beispiele</th></tr></thead><tbody>
@@ -309,19 +355,19 @@
 <tr><td><code>for i := a to ∞ while C do I</code></td><td><code>i := a; while C do I; i++</code></td></tr>
 <tr><td><code>foreach e ∈ s do I</code></td><td><code>for i := 1 to \|s\| do e := s[i]; I</code></td></tr>
 </tbody></table>
-<h2 id="besondere-werte-1"><a class="header" href="#besondere-werte-1">Besondere Werte</a></h2>
+<h2 id="besondere-werte"><a class="header" href="#besondere-werte">Besondere Werte</a></h2>
 <h3 id="undefinierter-wert-"><a class="header" href="#undefinierter-wert-">Undefinierter Wert (<code>⊥</code>)</a></h3>
 <p>Manchmal werden Typen um einen undefinierten Wert (bezeichnet mit dem Symbol ⊥) erweitert,
 der von den „eigentlichen“ Objekten vom Typ T unterscheidbar sein soll.</p>
-<h4 id="beispiele"><a class="header" href="#beispiele">Beispiele</a></h4>
-<pre><code>p = ⊥ : Digit
+<h4 id="beispiele-1"><a class="header" href="#beispiele-1">Beispiele</a></h4>
+<pre><code class="language-pseudocode">p = ⊥ : Digit
 </code></pre>
 <h3 id="zeigertypen-pointer-to-t"><a class="header" href="#zeigertypen-pointer-to-t">Zeigertypen (<code>Pointer to T</code>)</a></h3>
 <p>Besonders bei Zeigertypen ist ein undefinierter Wert hilfreich.</p>
 <p>Werte des Zeigertyps (<code>Pointer to T</code>) sind &quot;Griffe&quot; (engl.: <em>handle</em>) für Objekte vom Typ T.</p>
 <p>Im RAM-Modell ist ein solcher Griff einfach der Index (die &quot;Adresse&quot;) der ersten Zelle eines Speichersegments, in dem Objekt vom Typ T gespeichert ist.</p>
-<h4 id="beispiele-1"><a class="header" href="#beispiele-1">Beispiele</a></h4>
-<pre><code>p = ⊥ : Pointer to T
+<h4 id="beispiele-2"><a class="header" href="#beispiele-2">Beispiele</a></h4>
+<pre><code class="language-pseudocode">p = ⊥ : Pointer to T
 </code></pre>
 <h3 id="arrays"><a class="header" href="#arrays">Arrays</a></h3>
 <p>Deklaration <code>a : Array [i..j] of T</code> stellt einen Array <code>a</code> bereit, der aus <code>j - i + 1</code> Einträgen vom Typ T besteht,
@@ -333,7 +379,7 @@ die Startadresse von <code>a</code> und die Größe eines Objektes vom Typ <code
 und wenn jeder Eintrag ein Speicherwort ist,
 dann lädt die Befehlsfolge <code>R_1 :=R_a + R_i; R_2 := S[R_1]</code> den Inhalt von <code>a[42]</code> in Register
 <code>R_2</code>.</p>
-<pre><code>R_a = /* enthält die Startadresse von a[0..k] */
+<pre><code class="language-pseudocode">R_a = /* enthält die Startadresse von a[0..k] */
 R_i = 42 : Index
 
 R_i := R_a + R_i
@@ -385,6 +431,43 @@ Folgen zu verstehen sind. Die Implementierung des Datentyps „Menge“ erfolgt 
 über Folgen.</p>
 <h2 id="anweisungen"><a class="header" href="#anweisungen">Anweisungen</a></h2>
 <p>TODO: Im Buch 2.3.2 Anweisungen</p>
+<h1 id="logarithmus-regeln"><a class="header" href="#logarithmus-regeln">Logarithmus Regeln</a></h1>
+<h2 id="besondere-werte-1"><a class="header" href="#besondere-werte-1">Besondere Werte</a></h2>
+<p>\[ \log_b{b} = 1 \]</p>
+<p>\[ \log_b{1} = 0 \]</p>
+<h2 id="regeln"><a class="header" href="#regeln">Regeln</a></h2>
+<p>\[ \log_b{(x * n)} = \log_b{x} + \log_b{n} \]</p>
+<hr />
+<p>\[ \log_b{\left ( \frac{x}{n} \right)} = \log_b{x} - \log_b{n} \]</p>
+<hr />
+<p>\[ \log_b{\left ( x^n \right)} = n * \log_b{x} \]</p>
+<hr />
+<p>\[ \log_b{\sqrt[n]{x}} = \frac{1}{n} * \log_b{x} \]</p>
+<hr />
+<p>\[ \log_k{x} = \frac{\log_b{x}}{\log_b{k}} \]</p>
+<p><a href="https://www.frustfrei-lernen.de/mathematik/logarithmus-regeln.html">Quelle (2021.04.17)</a></p>
+<h2 id="ungleichungen"><a class="header" href="#ungleichungen">Ungleichungen</a></h2>
+<p>Falls \(b &gt; 1\), dann gilt:</p>
+<p>\[ 0 &lt; x &lt; y \iff \log_b{x} &lt; \log_b{y} \]</p>
+<p>Falls \(0 &lt; b &lt; 1\), dann gilt:</p>
+<p>\[ 0 &lt; x &lt; y \iff \log_b{x} &gt; \log_b{y} \]</p>
+<h1 id="konvergenz"><a class="header" href="#konvergenz">Konvergenz</a></h1>
+<p>\[ \lim_{n \to \infty} \frac{1}{n} = 0 \]</p>
+<p>Für \( k \in \mathbb{K} \) gilt:</p>
+<p>\[ \lim_{n \to \infty} \left(\frac{1}{k} \right)^n = 0 \]</p>
+<p>L'Hôpitals Regel (Krankenhaus-Regel):</p>
+<p>\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)} \]</p>
+<h2 id="limes-regeln"><a class="header" href="#limes-regeln">Limes-Regeln</a></h2>
+<p>Faktorregel:</p>
+<p>\[ \lim_{x \to c} a * f(x) = a * \lim_{x \to c} f(x) \]</p>
+<p>Summenregel:</p>
+<p>\[ \lim_{x \to c} \left[ f(x) + g(x) \right] = \lim_{x \to c} f(x) + \lim_{x \to c} g(x) \]</p>
+<p>Produktregel:</p>
+<p>\[ \lim_{x \to c} \left[ f(x) * g(x) \right] = \lim_{x \to c} f(x) * \lim_{x \to c} g(x) \]</p>
+<p>Quotientenregel:</p>
+<p>\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \frac{\lim_{x \to c} f(x)}{\lim_{x \to c} g(x)} \]</p>
+<p>Sei \( f \) eine stetige Funktion, dann gilt:</p>
+<p>\[ \lim_{x \to c} f(x) = f \left(\lim_{x \to c} x \right) \]</p>
 <h1 id="o-notation"><a class="header" href="#o-notation">O-Notation</a></h1>
 <p><img src="basics/../resources/o_chart.png" alt="chart" /></p>
 <p><a href="https://www.bigocheatsheet.com">https://www.bigocheatsheet.com</a></p>
@@ -429,37 +512,7 @@ Folgen zu verstehen sind. Die Implementierung des Datentyps „Menge“ erfolgt 
 <p>\[ f(n) + g(n) \in \Omega(f(n)) \]</p>
 <hr />
 <p>\[ \mathcal{O}(f(n)) * \mathcal{O}(g(n)) = \mathcal{O}(f(n) * g(n)) \]</p>
-<h1 id="master-theorem"><a class="header" href="#master-theorem">Master Theorem</a></h1>
-<h1 id="einfache-form"><a class="header" href="#einfache-form">Einfache Form</a></h1>
-<h1 id="sonstiges"><a class="header" href="#sonstiges">Sonstiges</a></h1>
-<p>\[ T(n) = aT\left(\frac{n}{b}\right) + f(n) \]</p>
-<h1 id="schleifeninvariante"><a class="header" href="#schleifeninvariante">Schleifeninvariante</a></h1>
-<p>Die Schleifeninvariante muss an folgenden Stellen gelten:</p>
-<ul>
-<li>Direkt nach Initialisierung der Laufvariable</li>
-<li>Vor bzw. nach der Überprüfung, ob die Schleife ausgeführt werden soll</li>
-<li>Nach Ausführung des Schleifenrumpfes (dieser beinhaltet auch das Inkrementieren der Laufvariable)</li>
-<li>Nach Ende der Schleife, die Laufvariable darf hierbei noch als existent angesehen werden</li>
-</ul>
-<h2 id="beispiele-2"><a class="header" href="#beispiele-2">Beispiele</a></h2>
-<pre><code class="language-pseudocode">Function power(a : ℝ; n_0 : ℕ) : ℝ
-    assert n_0 &gt;= 0 and ¬(a = 0 und n_0 = 0) // Vorbedingung
-    p = a : ℝ
-    r = 1 : ℝ
-    n = n_0 : ℕ // p^n * r = a^(n_0) hier 2^5 * 1 = 2^5
-
-    while n &gt; 0 do
-        invariant p^n * r = a^(n_0) und n &gt;= 0 // Schleifeninvariante
-        if n is odd then
-            n--
-            r := r * p
-        else
-            (n, p) := (n/2, p * p)
-
-    assert r = a^(n_0) // Nachbedingung
-    return r
-</code></pre>
-<p>Falls n gerade: Invariante gilt wegen \((p * p)^{\frac{n}{2}} = p^n \), wobei \(p * p \) = neues p und \(n/2\) = neues p.</p>
+<h1 id="algorithmen"><a class="header" href="#algorithmen">Algorithmen</a></h1>
 <h1 id="rekursive-multiplikation"><a class="header" href="#rekursive-multiplikation">Rekursive Multiplikation</a></h1>
 <pre><code class="language-pseudocode">Function recMult(a, b : Array[0..n-1] of Digit)                 // T(n) Ops
     assert a und b haben n Ziffern, sei k = [n/2]
@@ -474,57 +527,6 @@ Folgen zu verstehen sind. Die Implementierung des Datentyps „Menge“ erfolgt 
             + recMult(a_0, b_0)                                 // T(n/2) + 2n Ops
 </code></pre>
 <p>Laufzeit: \( T(n) \leq 4T (n/2) + 6n \)</p>
-<h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
-<h2 id="definition-von-algorithmus"><a class="header" href="#definition-von-algorithmus">Definition von Algorithmus</a></h2>
-<p>Rechenvorschrift zur Lösung eines Problems, bestehend aus endlich vielen, wohldefinierten Einzelschritten</p>
-<h2 id="eigenschaften-eines-algorithmus"><a class="header" href="#eigenschaften-eines-algorithmus">Eigenschaften eines Algorithmus</a></h2>
-<ul>
-<li>ein Algorithmus besitzt eine Eingabe und eine Ausgabe</li>
-<li>das Verfahren muss eindeutig und endlich beschreibbar sein (Finitheit)</li>
-<li>jeder Schritt des Verfahrens muss tatsächlich ausführbar sein (Ausführbarkeit)</li>
-<li>das Verfahren darf zu jedem Zeitpunkt nur endlich viel Speicherplatz
-benötigen (dynamische Finitheit, Platzkomplexität)</li>
-<li>das Verfahren darf nur endlich viele Schritte benötigen
-(Terminierung, Zeitkomplexität)</li>
-</ul>
-<h2 id="erster-algorithmus-langzahl-multiplikation"><a class="header" href="#erster-algorithmus-langzahl-multiplikation">Erster Algorithmus: Langzahl-Multiplikation</a></h2>
-<h3 id="gegeben"><a class="header" href="#gegeben">Gegeben:</a></h3>
-<ul>
-<li>Zahlen als Ziffernfolgen (&quot;digits&quot;) zur Basis B</li>
-<li>\( \vec{a} = (a_{n-1}, ... , a_{0}) \) mit Ziffern \( a_i = \{ 0, ..., B - 1 \} \)</li>
-<li>beschreibt die Zahl \( a_{0} * B^{0} + a_{1} * B^{1} + a_{2} * B^{2} + ... + a_{n-1} * B^{n-1} \)</li>
-</ul>
-<h3 id="aufgabe"><a class="header" href="#aufgabe">Aufgabe:</a></h3>
-<p>Berechne das Produkt zweier Langzahlen \( \vec{a} \) und \( \vec{b} \).</p>
-<h4 id="algorithmus-zur-addition-zweier-langzahlen"><a class="header" href="#algorithmus-zur-addition-zweier-langzahlen">Algorithmus zur Addition zweier Langzahlen</a></h4>
-<p>Eingabe: zwei Langzahlen \( \vec{a} = (a_{n-1}, ... , a_{0}) \) und \( \vec{b} = (b_{n-1}, ... , b_{0}) \)</p>
-<p>Verfahren:</p>
-<pre><code>c = 0 : Digit // carry, Überlauf
-
-for i := 0 to n - 1 do
-    (c, s_i) := a_i + b_i + c
-
-s_n := c
-</code></pre>
-<p>Ausgabe: Summe \( \vec{s} = (s_{n}, ... , s_{0}) \)</p>
-<p>Satz: Addition von zwei \(n\)-Ziffern-Zahlen benötigt \(n\) (Ziffern-)Additionen</p>
-<h4 id="algorithmus-zur-multiplikation-mit-einer-ziffer"><a class="header" href="#algorithmus-zur-multiplikation-mit-einer-ziffer">Algorithmus zur Multiplikation mit einer Ziffer</a></h4>
-<pre><code class="language-pseudocode">Function numberTimesDigit(a: Array[0..n-1] of Digit, b: Digit)
-
-r: Array[0..n] of Digit
-    c = 0 : Digit
-    (hi', lo) := a[0] * b // Ziffernmultiplikation
-    r[0] := lo
-
-    for i := 1 to n - 1 do
-        (hi, lo) := a[i] * b // Ziffernmultiplikation
-        (c, r[i]) := c + hi' + lo // Ziffernaddition
-        hi' := hi
-    r[n] := c + hi'
-    return r
-</code></pre>
-<p>Anzahl an Multiplikationen: \( (n - 1) + 1 = n \)</p>
-<p>Anzahl an Additionen: \( (n - 1) + 1 = n \)</p>
 
                     </main>
 

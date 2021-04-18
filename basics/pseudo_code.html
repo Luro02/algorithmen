@@ -98,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../basics/basics.html"><strong aria-hidden="true">1.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basics/log.html"><strong aria-hidden="true">1.1.</strong> Logarithmusgesetze</a></li><li class="chapter-item expanded "><a href="../basics/potenzgesetze.html"><strong aria-hidden="true">1.2.</strong> Potenzgesetze</a></li><li class="chapter-item expanded "><a href="../basics/konvergenz.html"><strong aria-hidden="true">1.3.</strong> Konvergenz</a></li><li class="chapter-item expanded "><a href="../basics/pseudo_code.html" class="active"><strong aria-hidden="true">1.4.</strong> Pseudo Code</a></li><li class="chapter-item expanded "><a href="../basics/o_notation.html"><strong aria-hidden="true">1.5.</strong> O-Notation</a></li><li class="chapter-item expanded "><a href="../basics/master_theorem.html"><strong aria-hidden="true">1.6.</strong> Master Theorem</a></li><li class="chapter-item expanded "><a href="../basics/schleifen_invariante.html"><strong aria-hidden="true">1.7.</strong> Schleifeninvariante</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithmen/algorithmen.html"><strong aria-hidden="true">2.</strong> Algorithmen</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithmen/rekursive_multiplikation.html"><strong aria-hidden="true">2.1.</strong> Rekursive Multiplikation</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter_1.html"><strong aria-hidden="true">3.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../README.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item "><a href="../chapter_1.html"><strong aria-hidden="true">2.</strong> Chapter 1</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../basics/README.html"><strong aria-hidden="true">3.</strong> basics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../basics/schleifen_invariante.html"><strong aria-hidden="true">3.1.</strong> Schleifeninvariante</a></li><li class="chapter-item "><a href="../basics/potenzgesetze.html"><strong aria-hidden="true">3.2.</strong> Potenzgesetze</a></li><li class="chapter-item "><a href="../basics/master_theorem.html"><strong aria-hidden="true">3.3.</strong> Master Theorem</a></li><li class="chapter-item expanded "><a href="../basics/pseudo_code.html" class="active"><strong aria-hidden="true">3.4.</strong> Pseudo Code</a></li><li class="chapter-item "><a href="../basics/log.html"><strong aria-hidden="true">3.5.</strong> Logarithmus Regeln</a></li><li class="chapter-item "><a href="../basics/konvergenz.html"><strong aria-hidden="true">3.6.</strong> Konvergenz</a></li><li class="chapter-item "><a href="../basics/o_notation.html"><strong aria-hidden="true">3.7.</strong> O-Notation</a></li><li class="spacer"></li></ol></li><li class="chapter-item "><a href="../algorithmen/README.html"><strong aria-hidden="true">4.</strong> algorithmen</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithmen/rekursive_multiplikation.html"><strong aria-hidden="true">4.1.</strong> Rekursive Multiplikation</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -204,14 +204,14 @@
 <p>Manchmal werden Typen um einen undefinierten Wert (bezeichnet mit dem Symbol ⊥) erweitert,
 der von den „eigentlichen“ Objekten vom Typ T unterscheidbar sein soll.</p>
 <h4 id="beispiele"><a class="header" href="#beispiele">Beispiele</a></h4>
-<pre><code>p = ⊥ : Digit
+<pre><code class="language-pseudocode">p = ⊥ : Digit
 </code></pre>
 <h3 id="zeigertypen-pointer-to-t"><a class="header" href="#zeigertypen-pointer-to-t">Zeigertypen (<code>Pointer to T</code>)</a></h3>
 <p>Besonders bei Zeigertypen ist ein undefinierter Wert hilfreich.</p>
 <p>Werte des Zeigertyps (<code>Pointer to T</code>) sind &quot;Griffe&quot; (engl.: <em>handle</em>) für Objekte vom Typ T.</p>
 <p>Im RAM-Modell ist ein solcher Griff einfach der Index (die &quot;Adresse&quot;) der ersten Zelle eines Speichersegments, in dem Objekt vom Typ T gespeichert ist.</p>
 <h4 id="beispiele-1"><a class="header" href="#beispiele-1">Beispiele</a></h4>
-<pre><code>p = ⊥ : Pointer to T
+<pre><code class="language-pseudocode">p = ⊥ : Pointer to T
 </code></pre>
 <h3 id="arrays"><a class="header" href="#arrays">Arrays</a></h3>
 <p>Deklaration <code>a : Array [i..j] of T</code> stellt einen Array <code>a</code> bereit, der aus <code>j - i + 1</code> Einträgen vom Typ T besteht,
@@ -223,7 +223,7 @@ die Startadresse von <code>a</code> und die Größe eines Objektes vom Typ <code
 und wenn jeder Eintrag ein Speicherwort ist,
 dann lädt die Befehlsfolge <code>R_1 :=R_a + R_i; R_2 := S[R_1]</code> den Inhalt von <code>a[42]</code> in Register
 <code>R_2</code>.</p>
-<pre><code>R_a = /* enthält die Startadresse von a[0..k] */
+<pre><code class="language-pseudocode">R_a = /* enthält die Startadresse von a[0..k] */
 R_i = 42 : Index
 
 R_i := R_a + R_i
@@ -281,13 +281,13 @@ Folgen zu verstehen sind. Die Implementierung des Datentyps „Menge“ erfolgt 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../basics/konvergenz.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../basics/master_theorem.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../basics/o_notation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../basics/log.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -299,13 +299,13 @@ Folgen zu verstehen sind. Die Implementierung des Datentyps „Menge“ erfolgt 
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../basics/konvergenz.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../basics/master_theorem.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../basics/o_notation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../basics/log.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
