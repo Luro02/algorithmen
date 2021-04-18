@@ -1,7 +1,7 @@
 Algorithmen 1 - Zusammenfassung
 ===
 
-Man kann sich die Seite hier anschauen: [https:://algo.xdg.io](https:://algo.xdg.io).
+Man kann sich die Seite hier anschauen: https://algo.xdg.io/
 
 ## Build
 1. https://github.com/rust-lang/mdBook#installation
