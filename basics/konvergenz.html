@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Schleifeninvariante - Algorithmen 1</title>
+        <title>Konvergenz - Algorithmen 1</title>
         
         
 
@@ -98,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../basics/basics.html"><strong aria-hidden="true">1.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basics/log.html"><strong aria-hidden="true">1.1.</strong> Logarithmusgesetze</a></li><li class="chapter-item expanded "><a href="../basics/potenzgesetze.html"><strong aria-hidden="true">1.2.</strong> Potenzgesetze</a></li><li class="chapter-item expanded "><a href="../basics/konvergenz.html"><strong aria-hidden="true">1.3.</strong> Konvergenz</a></li><li class="chapter-item expanded "><a href="../basics/pseudo_code.html"><strong aria-hidden="true">1.4.</strong> Pseudo Code</a></li><li class="chapter-item expanded "><a href="../basics/o_notation.html"><strong aria-hidden="true">1.5.</strong> O-Notation</a></li><li class="chapter-item expanded "><a href="../basics/master_theorem.html"><strong aria-hidden="true">1.6.</strong> Master Theorem</a></li><li class="chapter-item expanded "><a href="../basics/schleifen_invariante.html" class="active"><strong aria-hidden="true">1.7.</strong> Schleifeninvariante</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithmen/algorithmen.html"><strong aria-hidden="true">2.</strong> Algorithmen</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithmen/rekursive_multiplikation.html"><strong aria-hidden="true">2.1.</strong> Rekursive Multiplikation</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter_1.html"><strong aria-hidden="true">3.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../basics/basics.html"><strong aria-hidden="true">1.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basics/log.html"><strong aria-hidden="true">1.1.</strong> Logarithmusgesetze</a></li><li class="chapter-item expanded "><a href="../basics/potenzgesetze.html"><strong aria-hidden="true">1.2.</strong> Potenzgesetze</a></li><li class="chapter-item expanded "><a href="../basics/konvergenz.html" class="active"><strong aria-hidden="true">1.3.</strong> Konvergenz</a></li><li class="chapter-item expanded "><a href="../basics/pseudo_code.html"><strong aria-hidden="true">1.4.</strong> Pseudo Code</a></li><li class="chapter-item expanded "><a href="../basics/o_notation.html"><strong aria-hidden="true">1.5.</strong> O-Notation</a></li><li class="chapter-item expanded "><a href="../basics/master_theorem.html"><strong aria-hidden="true">1.6.</strong> Master Theorem</a></li><li class="chapter-item expanded "><a href="../basics/schleifen_invariante.html"><strong aria-hidden="true">1.7.</strong> Schleifeninvariante</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithmen/algorithmen.html"><strong aria-hidden="true">2.</strong> Algorithmen</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithmen/rekursive_multiplikation.html"><strong aria-hidden="true">2.1.</strong> Rekursive Multiplikation</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter_1.html"><strong aria-hidden="true">3.</strong> Chapter 1</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -170,46 +170,36 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="schleifeninvariante"><a class="header" href="#schleifeninvariante">Schleifeninvariante</a></h1>
-<p>Die Schleifeninvariante muss an folgenden Stellen gelten:</p>
-<ul>
-<li>Direkt nach Initialisierung der Laufvariable</li>
-<li>Vor bzw. nach der Überprüfung, ob die Schleife ausgeführt werden soll</li>
-<li>Nach Ausführung des Schleifenrumpfes (dieser beinhaltet auch das Inkrementieren der Laufvariable)</li>
-<li>Nach Ende der Schleife, die Laufvariable darf hierbei noch als existent angesehen werden</li>
-</ul>
-<h2 id="beispiele"><a class="header" href="#beispiele">Beispiele</a></h2>
-<pre><code>Function power(a : ℝ; n_0 : ℕ) : ℝ
-    assert n_0 &gt;= 0 and ¬(a = 0 und n_0 = 0) // Vorbedingung
-    p = a : ℝ
-    r = 1 : ℝ
-    n = n_0 : ℕ // p^n * r = a^(n_0) hier 2^5 * 1 = 2^5
-
-    while n &gt; 0 do
-        invariant p^n * r = a^(n_0) und n &gt;= 0 // Schleifeninvariante
-        if n is odd then
-            n--
-            r := r * p
-        else
-            (n, p) := (n/2, p * p)
-
-    assert r = a^(n_0) // Nachbedingung
-    return r
-</code></pre>
-<p>Falls n gerade: Invariante gilt wegen \((p * p)^{\frac{n}{2}} = p^n \), wobei \(p * p \) = neues p und \(n/2\) = neues p.</p>
+                        <h1 id="konvergenz"><a class="header" href="#konvergenz">Konvergenz</a></h1>
+<p>\[ \lim_{n \to \infty} \frac{1}{n} = 0 \]</p>
+<p>Für \( k \in \mathbb{K} \) gilt:</p>
+<p>\[ \lim_{n \to \infty} \left(\frac{1}{k} \right)^n = 0 \]</p>
+<p>L'Hôpitals Regel (Krankenhaus-Regel):</p>
+<p>\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)} \]</p>
+<h2 id="limes-regeln"><a class="header" href="#limes-regeln">Limes-Regeln</a></h2>
+<p>Faktorregel:</p>
+<p>\[ \lim_{x \to c} a * f(x) = a * \lim_{x \to c} f(x) \]</p>
+<p>Summenregel:</p>
+<p>\[ \lim_{x \to c} \left[ f(x) + g(x) \right] = \lim_{x \to c} f(x) + \lim_{x \to c} g(x) \]</p>
+<p>Produktregel:</p>
+<p>\[ \lim_{x \to c} \left[ f(x) * g(x) \right] = \lim_{x \to c} f(x) * \lim_{x \to c} g(x) \]</p>
+<p>Quotientenregel:</p>
+<p>\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \frac{\lim_{x \to c} f(x)}{\lim_{x \to c} g(x)} \]</p>
+<p>Sei \( f \) eine stetige Funktion, dann gilt:</p>
+<p>\[ \lim_{x \to c} f(x) = f \left(\lim_{x \to c} x \right) \]</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../basics/master_theorem.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../basics/potenzgesetze.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../algorithmen/algorithmen.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../basics/pseudo_code.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -221,13 +211,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../basics/master_theorem.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../basics/potenzgesetze.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../algorithmen/algorithmen.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../basics/pseudo_code.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
