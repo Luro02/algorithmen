@@ -1,0 +1,23 @@
+{
+    "name": "book",
+    "version": "0.0.0",
+    "license": "Apache-2.0",
+    "private": true,
+    "author": {
+        "name": "Lucas",
+        "email": "24826124+Luro02@users.noreply.github.com"
+    },
+    "scripts": {
+        "build": "parcel build index.js --no-source-maps"
+    },
+    "app": "dist/highlight.js",
+    "targets": {
+        "app": {}
+    },
+    "devDependencies": {
+        "parcel": "^2.0.0-beta.2"
+    },
+    "dependencies": {
+        "highlight.js": "^10.7.2"
+    }
+}

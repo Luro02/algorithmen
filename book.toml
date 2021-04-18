@@ -9,3 +9,4 @@ title = "Algorithmen 1"
 [output.html]
 mathjax-support = true
 git-repository-url = "https://github.com/Luro02/algorithmen/"
+additional-js = ["dist/highlight.js"]

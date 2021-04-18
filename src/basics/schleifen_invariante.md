@@ -8,7 +8,7 @@ Die Schleifeninvariante muss an folgenden Stellen gelten:
 
 ## Beispiele
 
-```
+```pseudocode
 Function power(a : ℝ; n_0 : ℕ) : ℝ
     assert n_0 >= 0 and ¬(a = 0 und n_0 = 0) // Vorbedingung
     p = a : ℝ

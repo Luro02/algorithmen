@@ -47,7 +47,7 @@ Satz: Addition von zwei \\(n\\)-Ziffern-Zahlen benötigt \\(n\\) (Ziffern-)Addit
 
 #### Algorithmus zur Multiplikation mit einer Ziffer
 
-```
+```pseudocode
 Function numberTimesDigit(a: Array[0..n-1] of Digit, b: Digit)
 
 r: Array[0..n] of Digit

@@ -16,6 +16,12 @@ jobs:
         with:
           mdbook-version: 'latest'
 
+      - name: Setup yarn
+        run: yarn install
+
+      - name: Build Javascript
+        run: yarn build
+
       - run: mdbook build
 
       - name: Deploy

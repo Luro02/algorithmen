@@ -1,7 +1,7 @@
 # Rekursive Multiplikation
 
-```
-FUNCTION recMult(a, b : Array[0..n-1] of Digit)                 // T(n) Ops
+```pseudocode
+Function recMult(a, b : Array[0..n-1] of Digit)                 // T(n) Ops
     assert a und b haben n Ziffern, sei k = [n/2]
     if n = 1 then
         return a * b                                            // 1 Op
