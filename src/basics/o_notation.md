@@ -47,13 +47,13 @@ Für \\(a \in \mathbb{N}_+\\) mit \\( a > 1\\) gilt:
 
 Sei \\(p(n) = \sum_{i=0}^{k} a_i n^i\\) ein Polynom mit reelen Koeffizienten, wobei \\(a_k > 0\\) gilt.
 
-Dann ist \\( p(n) \in O(n^k) \\)
+Dann ist \\( p(n) \in \mathcal{O}(n^k) \\)
 
 ---
 
-Falls \\( g(n) \in O(f(n)) \\) gilt:
+Falls \\( g(n) \in \mathcal{O}(f(n)) \\) gilt:
 
-\\[ f(n) + g(n) \in O(f(n)) \\]
+\\[ f(n) + g(n) \in \mathcal{O}(f(n)) \\]
 
 ---
 
@@ -65,4 +65,4 @@ Falls \\( g(n) \in O(f(n)) \\) gilt:
 
 ---
 
-\\[ O(f(n)) * O(g(n)) = O(f(n) * g(n)) \\]
+\\[ \mathcal{O}(f(n)) * \mathcal{O}(g(n)) = \mathcal{O}(f(n) * g(n)) \\]
