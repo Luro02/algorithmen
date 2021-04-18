@@ -1,7 +1,9 @@
 # Summary
 
 - [Basics](basics/basics.md)
+    - [Logarithmusgesetze](basics/log.md)
     - [Potenzgesetze](basics/potenzgesetze.md)
+    - [Konvergenz](basics/konvergenz.md)
     - [Pseudo Code](basics/pseudo_code.md)
     - [O-Notation](basics/o_notation.md)
     - [Master Theorem](basics/master_theorem.md)
