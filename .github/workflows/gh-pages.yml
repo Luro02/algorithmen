@@ -36,9 +36,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Setup mdbook-auto-gen-summary
-        run: cargo install mdbook-auto-gen-summary
-
       - name: Setup yarn
         run: yarn install
 
