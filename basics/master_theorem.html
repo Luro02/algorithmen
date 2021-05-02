@@ -98,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../README.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item "><a href="../chapter_1.html"><strong aria-hidden="true">2.</strong> Chapter 1</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../basics/README.html"><strong aria-hidden="true">3.</strong> basics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../basics/schleifen_invariante.html"><strong aria-hidden="true">3.1.</strong> Schleifeninvariante</a></li><li class="chapter-item "><a href="../basics/potenzgesetze.html"><strong aria-hidden="true">3.2.</strong> Potenzgesetze</a></li><li class="chapter-item expanded "><a href="../basics/master_theorem.html" class="active"><strong aria-hidden="true">3.3.</strong> Master Theorem</a></li><li class="chapter-item "><a href="../basics/pseudo_code.html"><strong aria-hidden="true">3.4.</strong> Pseudo Code</a></li><li class="chapter-item "><a href="../basics/log.html"><strong aria-hidden="true">3.5.</strong> Logarithmus Regeln</a></li><li class="chapter-item "><a href="../basics/konvergenz.html"><strong aria-hidden="true">3.6.</strong> Konvergenz</a></li><li class="chapter-item "><a href="../basics/o_notation.html"><strong aria-hidden="true">3.7.</strong> O-Notation</a></li><li class="spacer"></li></ol></li><li class="chapter-item "><a href="../algorithmen/README.html"><strong aria-hidden="true">4.</strong> algorithmen</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithmen/rekursive_multiplikation.html"><strong aria-hidden="true">4.1.</strong> Rekursive Multiplikation</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Willkommen</a></li><li class="chapter-item expanded "><a href="../chapter_1.html"><strong aria-hidden="true">2.</strong> Chapter 1</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Algorithmen</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithmen/rekursive_multiplikation.html"><strong aria-hidden="true">3.1.</strong> Rekursive Multiplikation</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Basics</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basics/konvergenz.html"><strong aria-hidden="true">4.1.</strong> Konvergenz</a></li><li class="chapter-item expanded "><a href="../basics/log.html"><strong aria-hidden="true">4.2.</strong> Logarithmus Regeln</a></li><li class="chapter-item expanded "><a href="../basics/master_theorem.html" class="active"><strong aria-hidden="true">4.3.</strong> Master Theorem</a></li><li class="chapter-item expanded "><a href="../basics/o_notation.html"><strong aria-hidden="true">4.4.</strong> O-Notation</a></li><li class="chapter-item expanded "><a href="../basics/potenzgesetze.html"><strong aria-hidden="true">4.5.</strong> Potenzgesetze</a></li><li class="chapter-item expanded "><a href="../basics/pseudo_code.html"><strong aria-hidden="true">4.6.</strong> Pseudo Code</a></li><li class="chapter-item expanded "><a href="../basics/schleifen_invariante.html"><strong aria-hidden="true">4.7.</strong> Schleifeninvariante</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,22 +171,68 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="master-theorem"><a class="header" href="#master-theorem">Master Theorem</a></h1>
-<h1 id="einfache-form"><a class="header" href="#einfache-form">Einfache Form</a></h1>
-<h1 id="sonstiges"><a class="header" href="#sonstiges">Sonstiges</a></h1>
-<p>\[ T(n) = aT\left(\frac{n}{b}\right) + f(n) \]</p>
+<p>Das Mastertheorem ist ein Werkzeug zur Abschätzung der Laufzeit von rekursiven Algorithmen.</p>
+<h2 id="definition"><a class="header" href="#definition">Definition</a></h2>
+<p>Für positive Konstanten \(\color{green} a\), \(\color{orange} b\) und \(\color{red} c\)
+sei \(n = {\color{orange} b}^k\) für ein \(k \in \mathbb{N}\)</p>
+<p>\[
+\begin{align*}
+T(n) = \begin{cases}
+{\color{green} a }             &amp; \text{falls } n = 1 \text{ (Basisfall) } \\
+{\color{red} c } \ T\left(\frac{n}{{\color{orange} b }}\right) + f(n) &amp; \text{falls } n &gt; 1 \text{ (teile und herrsche) }
+\end{cases}
+\end{align*}
+\]</p>
+<h4 id="legende"><a class="header" href="#legende">Legende</a></h4>
+<ul>
+<li>\(\color{green} a\) : Anzahl an Anweisungen, wenn \(n = 1\) (meistens \(1\))</li>
+<li>\(\color{orange} b\) : Anzahl an Teilprobleme, gelöst durch ein Unterproblem</li>
+<li>\(\color{red} c\) : Anzahl an Unterprobleme in der Rekursion</li>
+<li>\(f(n)\) : Kosten (Aufwand, Nebenkosten) die durch die Division des Problems und die Kombination der Teillösungen entstehen</li>
+</ul>
+<h3 id="fälle"><a class="header" href="#fälle">Fälle</a></h3>
+<p>Das Master-Theorem unterscheidet drei Fälle, wobei sich höchstens ein Fall auf die gegebene Rekursion anwenden lässt.
+Passt keiner der Fälle, so lässt sich das Master-Theorem nicht anwenden und man muss sich anderer Methoden bedienen.</p>
+<p>Sei \(\color{LimeGreen}{z} = \log_{\color{orange} b}{\color{red} c}\)</p>
+<h4 id="1-fall"><a class="header" href="#1-fall">1. Fall</a></h4>
+<p>Falls für ein \( \epsilon &gt; 0 \) gilt \(\color{Goldenrod}{f(n)} \in \mathcal{O}\left( n^{\color{LimeGreen}{z} - \epsilon} \right)\), dann ist \( T(n) \in \mathcal{O}\left( n^{\color{LimeGreen}{z}} \right) \)</p>
+<h4 id="2-fall"><a class="header" href="#2-fall">2. Fall</a></h4>
+<p>Falls es ein \( k \geq 0\) gibt für das gilt \(\color{Goldenrod}{f(n)} \in \Theta \left( n^{\color{LimeGreen}{z}} * \log^k{n} \right)\), dann ist \( T(n) \in \Theta \left( n^{\color{LimeGreen}{z}} * \log^{k+1}{n} \right) \)</p>
+<h4 id="3-fall"><a class="header" href="#3-fall">3. Fall</a></h4>
+<p>Falls für ein \( \epsilon &gt; 0 \) gilt \( \color{Goldenrod}{f(n)} \in \Omega \left( n^{\color{LimeGreen}{z} + \epsilon} \right) \)
+und es ein \(k &lt; 1\) und ein \(n_0 \in \mathbb{N}_{0}\) gibt für die gilt 
+\(\forall n &gt; n_0 : a * f \left( \frac{n}{b} \right) \leq k * \color{Goldenrod}{f(n)}\),
+dann ist \(T(n) \in \Theta \left( \color{Goldenrod}{f(n)} \right)\)</p>
+<h3 id="einfache-form"><a class="header" href="#einfache-form">Einfache Form</a></h3>
+<p>Vereinfacht gilt</p>
+<p>\[
+\begin{align*}
+T(n) \in \begin{cases}
+\Theta(n)                                                           &amp; \text{falls } {\color{red} c } &lt; {\color{orange} b } \\
+\Theta(n * \log{n})                                                 &amp; \text{falls } {\color{red} c } = {\color{orange} b } \\
+\Theta(n^{\log_{\color{orange} b }{\color{red} c }})                &amp; \text{falls } {\color{red} c } &gt; {\color{orange} b }
+\end{cases}
+\end{align*}
+\]</p>
+<h2 id="beispiele"><a class="header" href="#beispiele">Beispiele</a></h2>
+<ul>
+<li>\( d &lt; b \) : Median bestimmen</li>
+<li>\( d = b \) : Sortieralgorithmen wie mergesort, quicksort</li>
+<li>\( d &gt; b \) : rekursive Multiplikation, Karatsuba-Ofman-Multiplikation</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../basics/potenzgesetze.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../basics/log.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../basics/pseudo_code.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../basics/o_notation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -198,13 +244,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../basics/potenzgesetze.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../basics/log.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../basics/pseudo_code.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../basics/o_notation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

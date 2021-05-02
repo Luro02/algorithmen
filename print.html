@@ -100,7 +100,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="README.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item "><a href="chapter_1.html"><strong aria-hidden="true">2.</strong> Chapter 1</a></li><li class="spacer"></li><li class="chapter-item "><a href="basics/README.html"><strong aria-hidden="true">3.</strong> basics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="basics/schleifen_invariante.html"><strong aria-hidden="true">3.1.</strong> Schleifeninvariante</a></li><li class="chapter-item "><a href="basics/potenzgesetze.html"><strong aria-hidden="true">3.2.</strong> Potenzgesetze</a></li><li class="chapter-item "><a href="basics/master_theorem.html"><strong aria-hidden="true">3.3.</strong> Master Theorem</a></li><li class="chapter-item "><a href="basics/pseudo_code.html"><strong aria-hidden="true">3.4.</strong> Pseudo Code</a></li><li class="chapter-item "><a href="basics/log.html"><strong aria-hidden="true">3.5.</strong> Logarithmus Regeln</a></li><li class="chapter-item "><a href="basics/konvergenz.html"><strong aria-hidden="true">3.6.</strong> Konvergenz</a></li><li class="chapter-item "><a href="basics/o_notation.html"><strong aria-hidden="true">3.7.</strong> O-Notation</a></li><li class="spacer"></li></ol></li><li class="chapter-item "><a href="algorithmen/README.html"><strong aria-hidden="true">4.</strong> algorithmen</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="algorithmen/rekursive_multiplikation.html"><strong aria-hidden="true">4.1.</strong> Rekursive Multiplikation</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Willkommen</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">2.</strong> Chapter 1</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Algorithmen</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithmen/rekursive_multiplikation.html"><strong aria-hidden="true">3.1.</strong> Rekursive Multiplikation</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Basics</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="basics/konvergenz.html"><strong aria-hidden="true">4.1.</strong> Konvergenz</a></li><li class="chapter-item expanded "><a href="basics/log.html"><strong aria-hidden="true">4.2.</strong> Logarithmus Regeln</a></li><li class="chapter-item expanded "><a href="basics/master_theorem.html"><strong aria-hidden="true">4.3.</strong> Master Theorem</a></li><li class="chapter-item expanded "><a href="basics/o_notation.html"><strong aria-hidden="true">4.4.</strong> O-Notation</a></li><li class="chapter-item expanded "><a href="basics/potenzgesetze.html"><strong aria-hidden="true">4.5.</strong> Potenzgesetze</a></li><li class="chapter-item expanded "><a href="basics/pseudo_code.html"><strong aria-hidden="true">4.6.</strong> Pseudo Code</a></li><li class="chapter-item expanded "><a href="basics/schleifen_invariante.html"><strong aria-hidden="true">4.7.</strong> Schleifeninvariante</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -223,34 +223,151 @@ r: Array[0..n] of Digit
 </code></pre>
 <p>Anzahl an Multiplikationen: \( (n - 1) + 1 = n \)</p>
 <p>Anzahl an Additionen: \( (n - 1) + 1 = n \)</p>
-<h1 id="basics"><a class="header" href="#basics">Basics</a></h1>
-<h1 id="schleifeninvariante"><a class="header" href="#schleifeninvariante">Schleifeninvariante</a></h1>
-<p>Die Schleifeninvariante muss an folgenden Stellen gelten:</p>
-<ul>
-<li>Direkt nach Initialisierung der Laufvariable</li>
-<li>Vor bzw. nach der Überprüfung, ob die Schleife ausgeführt werden soll</li>
-<li>Nach Ausführung des Schleifenrumpfes (dieser beinhaltet auch das Inkrementieren der Laufvariable)</li>
-<li>Nach Ende der Schleife, die Laufvariable darf hierbei noch als existent angesehen werden</li>
-</ul>
-<h2 id="beispiele"><a class="header" href="#beispiele">Beispiele</a></h2>
-<pre><code class="language-pseudocode">Function power(a : ℝ; n_0 : ℕ) : ℝ
-    assert n_0 &gt;= 0 and ¬(a = 0 und n_0 = 0) // Vorbedingung
-    p = a : ℝ
-    r = 1 : ℝ
-    n = n_0 : ℕ // p^n * r = a^(n_0) hier 2^5 * 1 = 2^5
+<h1 id="rekursive-multiplikation"><a class="header" href="#rekursive-multiplikation">Rekursive Multiplikation</a></h1>
+<pre><code class="language-pseudocode">Function recMult(a, b : Array[0..n-1] of Digit)                 // T(n) Ops
+    assert a und b haben n Ziffern, sei k = [n/2]
+    if n = 1 then
+        return a * b                                            // 1 Op
 
-    while n &gt; 0 do
-        invariant p^n * r = a^(n_0) und n &gt;= 0 // Schleifeninvariante
-        if n is odd then
-            n--
-            r := r * p
-        else
-            (n, p) := (n/2, p * p)
+    Schreibe a als a_1 * B^k + a_0                              // 0 Ops
+    Schreibe b als b_1 * B^k + b_0                              // 0 Ops
 
-    assert r = a^(n_0) // Nachbedingung
-    return r
+    return recMult(a_1, b_1) * B^(2k)                           // T(n/2) + 2n Ops
+            + (recMult(a_0, b_1) + recMult(a_1, b_0)) • B^k     // 2T(n/2) + 2n Ops
+            + recMult(a_0, b_0)                                 // T(n/2) + 2n Ops
 </code></pre>
-<p>Falls n gerade: Invariante gilt wegen \((p * p)^{\frac{n}{2}} = p^n \), wobei \(p * p \) = neues p und \(n/2\) = neues p.</p>
+<p>Laufzeit: \( T(n) \leq 4T (n/2) + 6n \)</p>
+<h1 id="konvergenz"><a class="header" href="#konvergenz">Konvergenz</a></h1>
+<p>\[ \lim_{n \to \infty} \frac{1}{n} = 0 \]</p>
+<p>Für \( k \in \mathbb{K} \) gilt:</p>
+<p>\[ \lim_{n \to \infty} \left(\frac{1}{k} \right)^n = 0 \]</p>
+<p>L'Hôpitals Regel (Krankenhaus-Regel):</p>
+<p>\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)} \]</p>
+<h2 id="limes-regeln"><a class="header" href="#limes-regeln">Limes-Regeln</a></h2>
+<p>Faktorregel:</p>
+<p>\[ \lim_{x \to c} a * f(x) = a * \lim_{x \to c} f(x) \]</p>
+<p>Summenregel:</p>
+<p>\[ \lim_{x \to c} \left[ f(x) + g(x) \right] = \lim_{x \to c} f(x) + \lim_{x \to c} g(x) \]</p>
+<p>Produktregel:</p>
+<p>\[ \lim_{x \to c} \left[ f(x) * g(x) \right] = \lim_{x \to c} f(x) * \lim_{x \to c} g(x) \]</p>
+<p>Quotientenregel:</p>
+<p>\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \frac{\lim_{x \to c} f(x)}{\lim_{x \to c} g(x)} \]</p>
+<p>Sei \( f \) eine stetige Funktion, dann gilt:</p>
+<p>\[ \lim_{x \to c} f(x) = f \left(\lim_{x \to c} x \right) \]</p>
+<h1 id="logarithmus-regeln"><a class="header" href="#logarithmus-regeln">Logarithmus Regeln</a></h1>
+<h2 id="besondere-werte"><a class="header" href="#besondere-werte">Besondere Werte</a></h2>
+<p>\[ \log_b{b} = 1 \]</p>
+<p>\[ \log_b{1} = 0 \]</p>
+<h2 id="regeln"><a class="header" href="#regeln">Regeln</a></h2>
+<p>\[ \log_b{(x * n)} = \log_b{x} + \log_b{n} \]</p>
+<hr />
+<p>\[ \log_b{\left ( \frac{x}{n} \right)} = \log_b{x} - \log_b{n} \]</p>
+<hr />
+<p>\[ \log_b{\left ( x^n \right)} = n * \log_b{x} \]</p>
+<hr />
+<p>\[ \log_b{\sqrt[n]{x}} = \frac{1}{n} * \log_b{x} \]</p>
+<hr />
+<p>\[ \log_k{x} = \frac{\log_b{x}}{\log_b{k}} \]</p>
+<p><a href="https://www.frustfrei-lernen.de/mathematik/logarithmus-regeln.html">Quelle (2021.04.17)</a></p>
+<h2 id="ungleichungen"><a class="header" href="#ungleichungen">Ungleichungen</a></h2>
+<p>Falls \(b &gt; 1\), dann gilt:</p>
+<p>\[ 0 &lt; x &lt; y \iff \log_b{x} &lt; \log_b{y} \]</p>
+<p>Falls \(0 &lt; b &lt; 1\), dann gilt:</p>
+<p>\[ 0 &lt; x &lt; y \iff \log_b{x} &gt; \log_b{y} \]</p>
+<h1 id="master-theorem"><a class="header" href="#master-theorem">Master Theorem</a></h1>
+<p>Das Mastertheorem ist ein Werkzeug zur Abschätzung der Laufzeit von rekursiven Algorithmen.</p>
+<h2 id="definition"><a class="header" href="#definition">Definition</a></h2>
+<p>Für positive Konstanten \(\color{green} a\), \(\color{orange} b\) und \(\color{red} c\)
+sei \(n = {\color{orange} b}^k\) für ein \(k \in \mathbb{N}\)</p>
+<p>\[
+\begin{align*}
+T(n) = \begin{cases}
+{\color{green} a }             &amp; \text{falls } n = 1 \text{ (Basisfall) } \\
+{\color{red} c } \ T\left(\frac{n}{{\color{orange} b }}\right) + f(n) &amp; \text{falls } n &gt; 1 \text{ (teile und herrsche) }
+\end{cases}
+\end{align*}
+\]</p>
+<h4 id="legende"><a class="header" href="#legende">Legende</a></h4>
+<ul>
+<li>\(\color{green} a\) : Anzahl an Anweisungen, wenn \(n = 1\) (meistens \(1\))</li>
+<li>\(\color{orange} b\) : Anzahl an Teilprobleme, gelöst durch ein Unterproblem</li>
+<li>\(\color{red} c\) : Anzahl an Unterprobleme in der Rekursion</li>
+<li>\(f(n)\) : Kosten (Aufwand, Nebenkosten) die durch die Division des Problems und die Kombination der Teillösungen entstehen</li>
+</ul>
+<h3 id="fälle"><a class="header" href="#fälle">Fälle</a></h3>
+<p>Das Master-Theorem unterscheidet drei Fälle, wobei sich höchstens ein Fall auf die gegebene Rekursion anwenden lässt.
+Passt keiner der Fälle, so lässt sich das Master-Theorem nicht anwenden und man muss sich anderer Methoden bedienen.</p>
+<p>Sei \(\color{LimeGreen}{z} = \log_{\color{orange} b}{\color{red} c}\)</p>
+<h4 id="1-fall"><a class="header" href="#1-fall">1. Fall</a></h4>
+<p>Falls für ein \( \epsilon &gt; 0 \) gilt \(\color{Goldenrod}{f(n)} \in \mathcal{O}\left( n^{\color{LimeGreen}{z} - \epsilon} \right)\), dann ist \( T(n) \in \mathcal{O}\left( n^{\color{LimeGreen}{z}} \right) \)</p>
+<h4 id="2-fall"><a class="header" href="#2-fall">2. Fall</a></h4>
+<p>Falls es ein \( k \geq 0\) gibt für das gilt \(\color{Goldenrod}{f(n)} \in \Theta \left( n^{\color{LimeGreen}{z}} * \log^k{n} \right)\), dann ist \( T(n) \in \Theta \left( n^{\color{LimeGreen}{z}} * \log^{k+1}{n} \right) \)</p>
+<h4 id="3-fall"><a class="header" href="#3-fall">3. Fall</a></h4>
+<p>Falls für ein \( \epsilon &gt; 0 \) gilt \( \color{Goldenrod}{f(n)} \in \Omega \left( n^{\color{LimeGreen}{z} + \epsilon} \right) \)
+und es ein \(k &lt; 1\) und ein \(n_0 \in \mathbb{N}_{0}\) gibt für die gilt 
+\(\forall n &gt; n_0 : a * f \left( \frac{n}{b} \right) \leq k * \color{Goldenrod}{f(n)}\),
+dann ist \(T(n) \in \Theta \left( \color{Goldenrod}{f(n)} \right)\)</p>
+<h3 id="einfache-form"><a class="header" href="#einfache-form">Einfache Form</a></h3>
+<p>Vereinfacht gilt</p>
+<p>\[
+\begin{align*}
+T(n) \in \begin{cases}
+\Theta(n)                                                           &amp; \text{falls } {\color{red} c } &lt; {\color{orange} b } \\
+\Theta(n * \log{n})                                                 &amp; \text{falls } {\color{red} c } = {\color{orange} b } \\
+\Theta(n^{\log_{\color{orange} b }{\color{red} c }})                &amp; \text{falls } {\color{red} c } &gt; {\color{orange} b }
+\end{cases}
+\end{align*}
+\]</p>
+<h2 id="beispiele"><a class="header" href="#beispiele">Beispiele</a></h2>
+<ul>
+<li>\( d &lt; b \) : Median bestimmen</li>
+<li>\( d = b \) : Sortieralgorithmen wie mergesort, quicksort</li>
+<li>\( d &gt; b \) : rekursive Multiplikation, Karatsuba-Ofman-Multiplikation</li>
+</ul>
+<h1 id="o-notation"><a class="header" href="#o-notation">O-Notation</a></h1>
+<p><img src="basics/../resources/o_chart.png" alt="chart" /></p>
+<p><a href="https://www.bigocheatsheet.com">https://www.bigocheatsheet.com</a></p>
+<h1 id="definition-1"><a class="header" href="#definition-1">Definition</a></h1>
+<table><thead><tr><th>Notation</th><th>Definition</th><th>Mathematische Definition</th></tr></thead><tbody>
+<tr><td>\(f \in \mathcal{O}(g)\)</td><td>asymptotische obere Schranke</td><td>\[ \limsup_{x \to a} \left|\frac{f(x)}{g(x)}\right| &lt; \infty \]</td></tr>
+<tr><td>\(f \in \Omega(g)\)</td><td>asymptotische untere Schranke \(g \in \mathcal{O}(g)\)</td><td>\[ \liminf_{x \to a} \left|\frac{f(x)}{g(x)}\right| &gt;0 \]</td></tr>
+<tr><td>\(f \in \Theta(g)\)</td><td>asymptotisch schrafe Schranke, sowohl \(f\in\mathcal{O}(g)\) als auch \(f\in\Omega(g)\)</td><td>\[ 0 &lt; \liminf_{x \to a} \left|\frac{f(x)}{g(x)}\right| \le \limsup_{x \to a} \left|\frac{f(x)}{g(x)}\right|&lt; \infty \]</td></tr>
+<tr><td>\(f \in \hbox{o}(g)\)</td><td>asymptotisch gegenüber \(g\) vernachlässigbar</td><td>\[ \lim_{x \to a} \left|\frac{f(x)}{g(x)}\right | = 0 \]</td></tr>
+<tr><td>\(f \in \omega(g)\)</td><td>asymptotisch dominant, \(g\in\hbox{o}(f)\)</td><td>\[ \lim_{x \to a} \left|\frac{f(x)}{g(x)}\right| = \infty \]</td></tr>
+</tbody></table>
+<h2 id="mengen-definition"><a class="header" href="#mengen-definition">Mengen Definition</a></h2>
+<table><thead><tr><th>Notation</th><th>Menge</th></tr></thead><tbody>
+<tr><td>\[ \mathcal{O}(f(n)) \]</td><td>\[ \{ g(n) : \exists c &gt; 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \leq c * f(n) \} \]</td></tr>
+<tr><td>\[ \Omega(f(n)) \]</td><td>\[ \{ g(n) : \exists c &gt; 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \geq c * f(n) \} \]</td></tr>
+<tr><td>\[ \Theta(f(n)) \]</td><td>\[ \mathcal{O}(f(n)) \cap \Omega(f(n)) \]</td></tr>
+<tr><td>\[ \hbox{o}(f(n)) \]</td><td>\[  \{ g(n) : \forall c &gt; 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \leq c * f(n) \} \]</td></tr>
+<tr><td>\[ \omega(f(n)) \]</td><td>\[ \{ g(n) : \forall c &gt; 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \geq c * f(n) \} \]</td></tr>
+</tbody></table>
+<h1 id="gebräuchliche-klassen"><a class="header" href="#gebräuchliche-klassen">Gebräuchliche Klassen</a></h1>
+<table><thead><tr><th>O-Klasse</th><th>Eigenschaft</th></tr></thead><tbody>
+<tr><td>\( \mathcal{O}(1) \)</td><td>Höchstens konstanter Aufwand</td></tr>
+<tr><td>\( \mathcal{O}(\log n) \)</td><td>Höchstens logarithmischer Aufwand</td></tr>
+<tr><td>\( \mathcal{O}(n) \)</td><td>Höchstens linearer Aufwand</td></tr>
+<tr><td>\( \mathcal{O}(n \log n) \)</td><td>Höchstens \( n \log n \)</td></tr>
+<tr><td>\( \mathcal{O}(n^2) \)</td><td>Höchstens quadratischer Aufwand</td></tr>
+<tr><td>\( \mathcal{O}(n^k) \)</td><td>Höchstens polynomialer Aufwand</td></tr>
+<tr><td>\( \mathcal{O}(2^n) \)</td><td>Höchstens exponentieller Aufwand</td></tr>
+</tbody></table>
+<h1 id="hierarchie-im-o-kalkül"><a class="header" href="#hierarchie-im-o-kalkül">Hierarchie im O-Kalkül</a></h1>
+<p>Für \(a \in \mathbb{N}_+\) mit \( a &gt; 1\) gilt:</p>
+<p>\[ 1 \leq \log{n} \leq \sqrt[a]{n} = n^{\frac{1}{a}} \leq n \leq n^a \leq a^n \leq n! \leq n^n \]</p>
+<h1 id="rechenregeln"><a class="header" href="#rechenregeln">Rechenregeln</a></h1>
+<p>Sei \(p(n) = \sum_{i=0}^{k} a_i n^i\) ein Polynom mit reelen Koeffizienten, wobei \(a_k &gt; 0\) gilt.</p>
+<p>Dann ist \( p(n) \in \mathcal{O}(n^k) \)</p>
+<hr />
+<p>Falls \( g(n) \in \mathcal{O}(f(n)) \) gilt:</p>
+<p>\[ f(n) + g(n) \in \mathcal{O}(f(n)) \]</p>
+<hr />
+<p>\[ \forall c &gt; 0 : c f(n) \in \Theta(f(n)) \]</p>
+<hr />
+<p>\[ f(n) + g(n) \in \Omega(f(n)) \]</p>
+<hr />
+<p>\[ \mathcal{O}(f(n)) * \mathcal{O}(g(n)) = \mathcal{O}(f(n) * g(n)) \]</p>
 <h1 id="potenzgesetze"><a class="header" href="#potenzgesetze">Potenzgesetze</a></h1>
 <h2 id="Überblick"><a class="header" href="#Überblick">Überblick</a></h2>
 <h3 id="potenzen-addieren"><a class="header" href="#potenzen-addieren">Potenzen addieren</a></h3>
@@ -296,7 +413,7 @@ r: Array[0..n] of Digit
 <hr />
 <h3 id="division-mit-unterschiedlicher-basis"><a class="header" href="#division-mit-unterschiedlicher-basis">Division mit unterschiedlicher Basis</a></h3>
 <hr />
-<p>\[ a^{n} : b^{n} = \frac{a^{n}}{b^{n}} = (\frac{a}{b})^n \]</p>
+<p>\[ a^{n} : b^{n} = \frac{a^{n}}{b^{n}} = \left( \frac{a}{b} \right)^n \]</p>
 <hr />
 <h2 id="besonderheiten"><a class="header" href="#besonderheiten">Besonderheiten</a></h2>
 <hr />
@@ -322,10 +439,6 @@ r: Array[0..n] of Digit
 <p>\[ x^{-\frac{m}{n}} = \frac{1}{\sqrt[n]{x^{m}}} \]</p>
 <hr />
 <p><a href="https://www.mathebibel.de/potenzgesetze">Quelle (2021.04.17)</a></p>
-<h1 id="master-theorem"><a class="header" href="#master-theorem">Master Theorem</a></h1>
-<h1 id="einfache-form"><a class="header" href="#einfache-form">Einfache Form</a></h1>
-<h1 id="sonstiges"><a class="header" href="#sonstiges">Sonstiges</a></h1>
-<p>\[ T(n) = aT\left(\frac{n}{b}\right) + f(n) \]</p>
 <h1 id="pseudo-code"><a class="header" href="#pseudo-code">Pseudo Code</a></h1>
 <h1 id="syntax"><a class="header" href="#syntax">Syntax</a></h1>
 <table><thead><tr><th>Symbol</th><th>Bedeutung</th><th>Beispiele</th></tr></thead><tbody>
@@ -355,7 +468,7 @@ r: Array[0..n] of Digit
 <tr><td><code>for i := a to ∞ while C do I</code></td><td><code>i := a; while C do I; i++</code></td></tr>
 <tr><td><code>foreach e ∈ s do I</code></td><td><code>for i := 1 to \|s\| do e := s[i]; I</code></td></tr>
 </tbody></table>
-<h2 id="besondere-werte"><a class="header" href="#besondere-werte">Besondere Werte</a></h2>
+<h2 id="besondere-werte-1"><a class="header" href="#besondere-werte-1">Besondere Werte</a></h2>
 <h3 id="undefinierter-wert-"><a class="header" href="#undefinierter-wert-">Undefinierter Wert (<code>⊥</code>)</a></h3>
 <p>Manchmal werden Typen um einen undefinierten Wert (bezeichnet mit dem Symbol ⊥) erweitert,
 der von den „eigentlichen“ Objekten vom Typ T unterscheidbar sein soll.</p>
@@ -431,102 +544,33 @@ Folgen zu verstehen sind. Die Implementierung des Datentyps „Menge“ erfolgt 
 über Folgen.</p>
 <h2 id="anweisungen"><a class="header" href="#anweisungen">Anweisungen</a></h2>
 <p>TODO: Im Buch 2.3.2 Anweisungen</p>
-<h1 id="logarithmus-regeln"><a class="header" href="#logarithmus-regeln">Logarithmus Regeln</a></h1>
-<h2 id="besondere-werte-1"><a class="header" href="#besondere-werte-1">Besondere Werte</a></h2>
-<p>\[ \log_b{b} = 1 \]</p>
-<p>\[ \log_b{1} = 0 \]</p>
-<h2 id="regeln"><a class="header" href="#regeln">Regeln</a></h2>
-<p>\[ \log_b{(x * n)} = \log_b{x} + \log_b{n} \]</p>
-<hr />
-<p>\[ \log_b{\left ( \frac{x}{n} \right)} = \log_b{x} - \log_b{n} \]</p>
-<hr />
-<p>\[ \log_b{\left ( x^n \right)} = n * \log_b{x} \]</p>
-<hr />
-<p>\[ \log_b{\sqrt[n]{x}} = \frac{1}{n} * \log_b{x} \]</p>
-<hr />
-<p>\[ \log_k{x} = \frac{\log_b{x}}{\log_b{k}} \]</p>
-<p><a href="https://www.frustfrei-lernen.de/mathematik/logarithmus-regeln.html">Quelle (2021.04.17)</a></p>
-<h2 id="ungleichungen"><a class="header" href="#ungleichungen">Ungleichungen</a></h2>
-<p>Falls \(b &gt; 1\), dann gilt:</p>
-<p>\[ 0 &lt; x &lt; y \iff \log_b{x} &lt; \log_b{y} \]</p>
-<p>Falls \(0 &lt; b &lt; 1\), dann gilt:</p>
-<p>\[ 0 &lt; x &lt; y \iff \log_b{x} &gt; \log_b{y} \]</p>
-<h1 id="konvergenz"><a class="header" href="#konvergenz">Konvergenz</a></h1>
-<p>\[ \lim_{n \to \infty} \frac{1}{n} = 0 \]</p>
-<p>Für \( k \in \mathbb{K} \) gilt:</p>
-<p>\[ \lim_{n \to \infty} \left(\frac{1}{k} \right)^n = 0 \]</p>
-<p>L'Hôpitals Regel (Krankenhaus-Regel):</p>
-<p>\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)} \]</p>
-<h2 id="limes-regeln"><a class="header" href="#limes-regeln">Limes-Regeln</a></h2>
-<p>Faktorregel:</p>
-<p>\[ \lim_{x \to c} a * f(x) = a * \lim_{x \to c} f(x) \]</p>
-<p>Summenregel:</p>
-<p>\[ \lim_{x \to c} \left[ f(x) + g(x) \right] = \lim_{x \to c} f(x) + \lim_{x \to c} g(x) \]</p>
-<p>Produktregel:</p>
-<p>\[ \lim_{x \to c} \left[ f(x) * g(x) \right] = \lim_{x \to c} f(x) * \lim_{x \to c} g(x) \]</p>
-<p>Quotientenregel:</p>
-<p>\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \frac{\lim_{x \to c} f(x)}{\lim_{x \to c} g(x)} \]</p>
-<p>Sei \( f \) eine stetige Funktion, dann gilt:</p>
-<p>\[ \lim_{x \to c} f(x) = f \left(\lim_{x \to c} x \right) \]</p>
-<h1 id="o-notation"><a class="header" href="#o-notation">O-Notation</a></h1>
-<p><img src="basics/../resources/o_chart.png" alt="chart" /></p>
-<p><a href="https://www.bigocheatsheet.com">https://www.bigocheatsheet.com</a></p>
-<h1 id="definition"><a class="header" href="#definition">Definition</a></h1>
-<table><thead><tr><th>Notation</th><th>Definition</th><th>Mathematische Definition</th></tr></thead><tbody>
-<tr><td>\(f \in \mathcal{O}(g)\)</td><td>asymptotische obere Schranke</td><td>\[ \limsup_{x \to a} \left|\frac{f(x)}{g(x)}\right| &lt; \infty \]</td></tr>
-<tr><td>\(f \in \Omega(g)\)</td><td>asymptotische untere Schranke \(g \in \mathcal{O}(g)\)</td><td>\[ \liminf_{x \to a} \left|\frac{f(x)}{g(x)}\right| &gt;0 \]</td></tr>
-<tr><td>\(f \in \Theta(g)\)</td><td>asymptotisch schrafe Schranke, sowohl \(f\in\mathcal{O}(g)\) als auch \(f\in\Omega(g)\)</td><td>\[ 0 &lt; \liminf_{x \to a} \left|\frac{f(x)}{g(x)}\right| \le \limsup_{x \to a} \left|\frac{f(x)}{g(x)}\right|&lt; \infty \]</td></tr>
-<tr><td>\(f \in \hbox{o}(g)\)</td><td>asymptotisch gegenüber \(g\) vernachlässigbar</td><td>\[ \lim_{x \to a} \left|\frac{f(x)}{g(x)}\right | = 0 \]</td></tr>
-<tr><td>\(f \in \omega(g)\)</td><td>asymptotisch dominant, \(g\in\hbox{o}(f)\)</td><td>\[ \lim_{x \to a} \left|\frac{f(x)}{g(x)}\right| = \infty \]</td></tr>
-</tbody></table>
-<h2 id="mengen-definition"><a class="header" href="#mengen-definition">Mengen Definition</a></h2>
-<table><thead><tr><th>Notation</th><th>Menge</th></tr></thead><tbody>
-<tr><td>\[ \mathcal{O}(f(n)) \]</td><td>\[ \{ g(n) : \exists c &gt; 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \leq c * f(n) \} \]</td></tr>
-<tr><td>\[ \Omega(f(n)) \]</td><td>\[ \{ g(n) : \exists c &gt; 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \geq c * f(n) \} \]</td></tr>
-<tr><td>\[ \Theta(f(n)) \]</td><td>\[ \mathcal{O}(f(n)) \cap \Omega(f(n)) \]</td></tr>
-<tr><td>\[ \hbox{o}(f(n)) \]</td><td>\[  \{ g(n) : \forall c &gt; 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \leq c * f(n) \} \]</td></tr>
-<tr><td>\[ \omega(f(n)) \]</td><td>\[ \{ g(n) : \forall c &gt; 0 : \exists n_0 \in \mathbb{N}_+ : \forall n \geq n_0 : g(n) \geq c * f(n) \} \]</td></tr>
-</tbody></table>
-<h1 id="gebräuchliche-klassen"><a class="header" href="#gebräuchliche-klassen">Gebräuchliche Klassen</a></h1>
-<table><thead><tr><th>O-Klasse</th><th>Eigenschaft</th></tr></thead><tbody>
-<tr><td>\( \mathcal{O}(1) \)</td><td>Höchstens konstanter Aufwand</td></tr>
-<tr><td>\( \mathcal{O}(\log n) \)</td><td>Höchstens logarithmischer Aufwand</td></tr>
-<tr><td>\( \mathcal{O}(n) \)</td><td>Höchstens linearer Aufwand</td></tr>
-<tr><td>\( \mathcal{O}(n \log n) \)</td><td>Höchstens \( n \log n \)</td></tr>
-<tr><td>\( \mathcal{O}(n^2) \)</td><td>Höchstens quadratischer Aufwand</td></tr>
-<tr><td>\( \mathcal{O}(n^k) \)</td><td>Höchstens polynomialer Aufwand</td></tr>
-<tr><td>\( \mathcal{O}(2^n) \)</td><td>Höchstens exponentieller Aufwand</td></tr>
-</tbody></table>
-<h1 id="hierarchie-im-o-kalkül"><a class="header" href="#hierarchie-im-o-kalkül">Hierarchie im O-Kalkül</a></h1>
-<p>Für \(a \in \mathbb{N}_+\) mit \( a &gt; 1\) gilt:</p>
-<p>\[ 1 \leq \log{n} \leq \sqrt[a]{n} = n^{\frac{1}{a}} \leq n \leq n^a \leq a^n \leq n! \leq n^n \]</p>
-<h1 id="rechenregeln"><a class="header" href="#rechenregeln">Rechenregeln</a></h1>
-<p>Sei \(p(n) = \sum_{i=0}^{k} a_i n^i\) ein Polynom mit reelen Koeffizienten, wobei \(a_k &gt; 0\) gilt.</p>
-<p>Dann ist \( p(n) \in \mathcal{O}(n^k) \)</p>
-<hr />
-<p>Falls \( g(n) \in \mathcal{O}(f(n)) \) gilt:</p>
-<p>\[ f(n) + g(n) \in \mathcal{O}(f(n)) \]</p>
-<hr />
-<p>\[ \forall c &gt; 0 : c f(n) \in \Theta(f(n)) \]</p>
-<hr />
-<p>\[ f(n) + g(n) \in \Omega(f(n)) \]</p>
-<hr />
-<p>\[ \mathcal{O}(f(n)) * \mathcal{O}(g(n)) = \mathcal{O}(f(n) * g(n)) \]</p>
-<h1 id="algorithmen"><a class="header" href="#algorithmen">Algorithmen</a></h1>
-<h1 id="rekursive-multiplikation"><a class="header" href="#rekursive-multiplikation">Rekursive Multiplikation</a></h1>
-<pre><code class="language-pseudocode">Function recMult(a, b : Array[0..n-1] of Digit)                 // T(n) Ops
-    assert a und b haben n Ziffern, sei k = [n/2]
-    if n = 1 then
-        return a * b                                            // 1 Op
+<h1 id="schleifeninvariante"><a class="header" href="#schleifeninvariante">Schleifeninvariante</a></h1>
+<p>Die Schleifeninvariante muss an folgenden Stellen gelten:</p>
+<ul>
+<li>Direkt nach Initialisierung der Laufvariable</li>
+<li>Vor bzw. nach der Überprüfung, ob die Schleife ausgeführt werden soll</li>
+<li>Nach Ausführung des Schleifenrumpfes (dieser beinhaltet auch das Inkrementieren der Laufvariable)</li>
+<li>Nach Ende der Schleife, die Laufvariable darf hierbei noch als existent angesehen werden</li>
+</ul>
+<h2 id="beispiele-3"><a class="header" href="#beispiele-3">Beispiele</a></h2>
+<pre><code class="language-pseudocode">Function power(a : ℝ; n_0 : ℕ) : ℝ
+    assert n_0 &gt;= 0 and ¬(a = 0 und n_0 = 0) // Vorbedingung
+    p = a : ℝ
+    r = 1 : ℝ
+    n = n_0 : ℕ // p^n * r = a^(n_0) hier 2^5 * 1 = 2^5
 
-    Schreibe a als a_1 * B^k + a_0                              // 0 Ops
-    Schreibe b als b_1 * B^k + b_0                              // 0 Ops
+    while n &gt; 0 do
+        invariant p^n * r = a^(n_0) und n &gt;= 0 // Schleifeninvariante
+        if n is odd then
+            n--
+            r := r * p
+        else
+            (n, p) := (n/2, p * p)
 
-    return recMult(a_1, b_1) * B^(2k)                           // T(n/2) + 2n Ops
-            + (recMult(a_0, b_1) + recMult(a_1, b_0)) • B^k     // 2T(n/2) + 2n Ops
-            + recMult(a_0, b_0)                                 // T(n/2) + 2n Ops
+    assert r = a^(n_0) // Nachbedingung
+    return r
 </code></pre>
-<p>Laufzeit: \( T(n) \leq 4T (n/2) + 6n \)</p>
+<p>Falls n gerade: Invariante gilt wegen \((p * p)^{\frac{n}{2}} = p^n \), wobei \(p * p \) = neues p und \(n/2\) = neues p.</p>
 
                     </main>
 
