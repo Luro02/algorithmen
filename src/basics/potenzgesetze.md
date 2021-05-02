@@ -88,7 +88,7 @@ Mit gleichem Exponenten:
 
 ---
 
-\\[ a^{n} : b^{n} = \frac{a^{n}}{b^{n}} = (\frac{a}{b})^n \\]
+\\[ a^{n} : b^{n} = \frac{a^{n}}{b^{n}} = \left( \frac{a}{b} \right)^n \\]
 
 ---
 
