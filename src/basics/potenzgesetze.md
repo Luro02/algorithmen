@@ -18,11 +18,11 @@
 
 Mit gleicher Basis:
 
-\\[  x^a - x^b = x^{a + b} \\]
+\\[  x^a * x^b = x^{a + b} \\]
 
 Mit gleichem Exponenten:
 
-\\[  a^n - b^n = (a * b)^{n} \\]
+\\[  a^n * b^n = (a * b)^{n} \\]
 
 ---
 
